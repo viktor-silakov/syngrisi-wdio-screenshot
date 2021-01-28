@@ -51,6 +51,8 @@ All of these provide options that will help you to exclude unrelevant parts (e.g
 available:
 
 
+* **hideScrollBar** `String` hide scrollbar for `saveViewportScreenshot` <br>
+
 * **exclude** `String[]|Object[]` (**not yet implemented**)<br>
   exclude frequently changing parts of your screenshot, you can either pass all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html)
   that queries one or multiple elements or you can define x and y values which stretch a rectangle or polygon
