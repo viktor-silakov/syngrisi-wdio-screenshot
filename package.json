@@ -1,7 +1,7 @@
 {
-  "name": "wdio-screenshot-v5",
+  "name": "wdio-screenshot-syngrisi",
   "version": "1.0.0",
-  "description": "Screenshot commands for WebdriverIO 5",
+  "description": "Screenshot commands for WebdriverIO > 5 and Syngrisi",
   "main": "lib/index.js",
   "files": [
     "*.md",
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mjdch/wdio-screenshot-v5"
+    "url": "https://github.com/viktor-silakov/wdio-screenshot-syngrisi"
   },
   "bugs": {
-    "url": "https://github.com/mjdch/wdio-screenshot-v5/issues"
+    "url": "https://github.com/viktor-silakov/wdio-screenshot-syngrisi/issues"
   },
-  "author": "Jan-André Zinser & Maciej Jadach",
+  "author": "Jan-André Zinser & Maciej Jadach & Viktar Silakou",
   "license": "MIT",
   "peerDependencies": {
     "webdriverio": "^5.7.6"
