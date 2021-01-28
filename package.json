@@ -1,5 +1,5 @@
 {
-  "name": "wdio-screenshot-syngrisi",
+  "name": "@syngrisi/syngrisi-wdio-screenshot",
   "version": "1.0.0",
   "description": "Screenshot commands for WebdriverIO > 5 and Syngrisi",
   "main": "lib/index.js",

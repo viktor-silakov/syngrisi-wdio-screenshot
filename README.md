@@ -1,8 +1,7 @@
-# wdio-screenshot-singrisy
-> A WebdriverIO plugin. Additional commands for taking screenshots with WebdriverIO adapted to [Syngrisi](https://github.com/viktor-silakov/syngrisi).
+# syngrisi-wdio-screenshot
+> A WebdriverIO plugin. Additional commands for taking screenshots with WebdriverIO adapted for [Syngrisi](https://github.com/viktor-silakov/syngrisi).
 
 Working properly with WebdriverIO > 5.0.0. Old repository: https://github.com/mjdch/wdio-screenshot-v5 ,
-thisis only port for new version of WebdriverIO
 
 ## Browser Support
 - Firefox
@@ -13,10 +12,10 @@ thisis only port for new version of WebdriverIO
 ## Installation
 
 
-Install wdio-screenshot via NPM as usual:
+Install syngrisi-wdio-screenshot via NPM as usual:
 
 ```sh
-$ npm install wdio-screenshot-syngrisi --save-dev
+$ npm install @syngrisi/syngrisi-wdio-screenshot --save-dev
 ```
 
 
@@ -25,11 +24,11 @@ Instructions on how to install `WebdriverIO` can be found [here.](http://webdriv
 Note: If you want to improve performance, you can [install GraphicsMagick](#use-graphicsmagick).
 
 ## Configuration
-Setup wdio-screenshot by adding a `wdio-screenshot` key to the service section of your WebdriverIO config.
+Setup wdio-screenshot by adding a `@syngrisi/syngrisi-wdio-screenshot` key to the service section of your WebdriverIO config.
 More information [Custom Services](https://webdriver.io/docs/customservices.html)
 
 ```js
-const WdioScreenshot = require('wdio-screenshot-syngrisi');
+const WdioScreenshot = require('@syngrisi/syngrisi-wdio-screenshot');
 
 // wdio.conf.js
 exports.config = {
