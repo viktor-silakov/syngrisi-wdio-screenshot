@@ -69,7 +69,10 @@ export default class BaseStrategy {
 
   createCropDimensions(width, height, x, y, top, rotation) {
     const adjustedWidth = this.screenDimensions.applyScaleFactor(width);
-    const adjustedHeight = this.screenDimensions.applyScaleFactor(height);
+    let adjustedHeight = this.screenDimensions.applyScaleFactor(height);
+    if (adjustedHeight < this.screenDimensions.viewportHeight)
+      adjustedHeight = this.screenDimensions.viewportHeight
+
     return new CropDimension(adjustedWidth, adjustedHeight, x, y, top, rotation);
   }
 

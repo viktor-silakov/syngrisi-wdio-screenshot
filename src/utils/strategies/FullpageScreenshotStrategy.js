@@ -20,7 +20,7 @@ export default class FullpageScreenshotStrategy extends BaseStrategy {
   }
 
   getCropDimensions() {
-    const { startX, startY, endX, endY } = this.area;
+    const {startX, startY, endX, endY} = this.area;
 
     const width = endX - startX;
     const height = endY - startY;

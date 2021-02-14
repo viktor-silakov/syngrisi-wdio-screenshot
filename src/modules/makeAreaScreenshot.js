@@ -8,7 +8,7 @@ import virtualScroll from '../scripts/virtualScroll';
 import pageHeight from '../scripts/pageHeight';
 import generateUUID from '../utils/generateUUID';
 import saveBase64Image from '../utils/saveBase64Image';
-import { cropImage, mergeImages } from '../utils/image';
+import {cropImage, mergeImages} from '../utils/image';
 import ScreenDimension from '../utils/ScreenDimension';
 import normalizeScreenshot from '../utils/normalizeScreenshot';
 
@@ -25,7 +25,7 @@ async function storeScreenshot(browser, screenDimensions, cropDimensions, base64
 }
 
 export default async function makeAreaScreenshot(browser, startX, startY, endX, endY) {
-  log('requested a screenshot for the following area: %j', { startX, startY, endX, endY});
+  log('requested a screenshot for the following area: %j', {startX, startY, endX, endY});
 
   const screenDimensions = await browser.execute(getScreenDimensions);
   log('detected screenDimensions %j', screenDimensions);
@@ -49,7 +49,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
     let loop = false;
     do {
-      const { x, y, indexX, indexY } = screenshotStrategy.getScrollPosition();
+      const {x, y, indexX, indexY} = screenshotStrategy.getScrollPosition();
       log('scroll to coordinates x: %s, y: %s for index x: %s, y: %s', x, y, indexX, indexY);
 
       await browser.execute(virtualScroll, x, y, false);
@@ -63,7 +63,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
 
       screenshotPromises.push(storeScreenshot(browser, screenDimension, cropDimensions, base64Screenshot, filePath));
 
-      if(!Array.isArray(cropImages[indexY])) {
+      if (!Array.isArray(cropImages[indexY])) {
         cropImages[indexY] = [];
       }
 
@@ -74,7 +74,7 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
     } while (loop)
 
     const [mergedBase64Screenshot] = await Promise.all([
-      Promise.resolve().then(async() => {
+      Promise.resolve().then(async () => {
         await Promise.all(screenshotPromises);
         log('merge images togehter');
         const mergedBase64Screenshot = await mergeImages(cropImages);
@@ -92,10 +92,11 @@ export default async function makeAreaScreenshot(browser, startX, startY, endX, 
     ]);
     return mergedBase64Screenshot;
 
-  } catch(e) {
+  } catch (e) {
     try {
       await fsExtra.remove(dir);
-    } catch(e) {}
+    } catch (e) {
+    }
 
     throw e;
   }
