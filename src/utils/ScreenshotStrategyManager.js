@@ -21,7 +21,7 @@ function isPhantomjs(browser) {
 
 export default class ScreenshotStrategyManager {
 
-  static getStrategy(browser, screenDimensions, options) {
+  static getStrategy(browser, screenDimensions, options = {}) {
     if (isPhantomjs(browser)) {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
