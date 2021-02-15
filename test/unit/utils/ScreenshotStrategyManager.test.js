@@ -84,24 +84,24 @@ describe('ScreenshotStrategyManager', function() {
     this.screenDimensionsIpadScaled = new ScreenDimension(dimensionIpad92PortraitZoomed);
   });
 
-  it('returns a instance of MergeScreenshotStrategy for browsers with support for viewport screenshots only', function () {
-    const browsers = [
-      this.firefox,
-      this.firefox2,
-      this.chrome,
-      this.chrome2,
-      this.ie,
-      this.ie2
-    ];
-
-    for (const browser of browsers) {
-      // when
-      const strategy = ScreenshotStrategyManager.getStrategy(browser, this.screenDimensions);
-      // then
-      assert.instanceOf(strategy, BaseStrategy);
-      assert.instanceOf(strategy, MergeScreenshotStrategy);
-    }
-  });
+  // it('returns a instance of MergeScreenshotStrategy for browsers with support for viewport screenshots only', function () {
+  //   const browsers = [
+  //     this.firefox,
+  //     this.firefox2,
+  //     this.chrome,
+  //     this.chrome2,
+  //     this.ie,
+  //     this.ie2
+  //   ];
+  //
+  //   for (const browser of browsers) {
+  //     // when
+  //     const strategy = ScreenshotStrategyManager.getStrategy(browser, this.screenDimensions);
+  //     // then
+  //     assert.instanceOf(strategy, BaseStrategy);
+  //     assert.instanceOf(strategy, MergeScreenshotStrategy);
+  //   }
+  // });
 
   it('returns a instance of FullpageScreenshotStrategy for browsers with support for whole document screenshots', function () {
     const browsers = [
