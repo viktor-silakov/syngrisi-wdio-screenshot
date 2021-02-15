@@ -33,7 +33,7 @@ export default class ScreenshotStrategyManager {
       return new TrimAndMergeViewportStrategy(screenDimensions);
     }
 
-    if (options.viewport) {
+    if (options["viewport"]) {
       log('use merge viewport strategy for VP')
       return new MergeViewportStrategyVP(screenDimensions);
     }
