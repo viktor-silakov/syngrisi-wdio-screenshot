@@ -1,4 +1,5 @@
 import BaseStrategy from './BaseStrategy';
+import CropDimension from "../CropDimension";
 
 export default class MergeScreenshotStrategy extends BaseStrategy {
 
@@ -24,6 +25,15 @@ export default class MergeScreenshotStrategy extends BaseStrategy {
     };
   }
 
+  createCropDimensions(width, height, x, y, top, rotation) {
+    const adjustedWidth = this.screenDimensions.applyScaleFactor(width);
+    let adjustedHeight = this.screenDimensions.applyScaleFactor(height);
+    if (adjustedHeight < this.screenDimensions.viewportHeight)
+      adjustedHeight = this.screenDimensions.viewportHeight
+
+    return new CropDimension(adjustedWidth, adjustedHeight, x, y, top, rotation);
+  }
+
   getCropDimensions() {
     const viewportWidth = this.screenDimensions.getViewportWidth();
     const viewportHeight = this.screenDimensions.getViewportHeight();
@@ -40,4 +50,6 @@ export default class MergeScreenshotStrategy extends BaseStrategy {
 
     return this.createCropDimensions(width, height, 0, 0, true, 0);
   }
+
+
 }

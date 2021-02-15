@@ -1,6 +1,7 @@
 import debug from 'debug';
 
 import MergeViewportStrategy from './strategies/MergeScreenshotStrategy';
+import MergeViewportStrategyVP from './strategies/MergeScreenshotStrategyVP';
 import TrimAndMergeViewportStrategy from './strategies/TrimAndMergeScreenshotStrategy';
 import FullpageScreenshotStrategy from './strategies/FullpageScreenshotStrategy';
 
@@ -20,16 +21,21 @@ function isPhantomjs(browser) {
 
 export default class ScreenshotStrategyManager {
 
-  static getStrategy(browser, screenDimensions) {
+  static getStrategy(browser, screenDimensions, options) {
     if (isPhantomjs(browser)) {
       log('use full page strategy')
       return new FullpageScreenshotStrategy(screenDimensions);
     }
 
-    const { isIOS } = browser;
+    const {isIOS} = browser;
     if (isIOS) {
       log('use iOS Trim and Merge viewport strategy')
       return new TrimAndMergeViewportStrategy(screenDimensions);
+    }
+
+    if (options.viewport) {
+      log('use merge viewport strategy for VP')
+      return new MergeViewportStrategyVP(screenDimensions);
     }
 
     log('use merge viewport strategy')

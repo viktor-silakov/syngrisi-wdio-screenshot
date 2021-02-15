@@ -24,14 +24,14 @@ async function storeScreenshot(browser, screenDimensions, cropDimensions, base64
   await saveBase64Image(filePath, croppedBase64Screenshot);
 }
 
-export default async function makeAreaScreenshot(browser, startX, startY, endX, endY) {
+export default async function makeAreaScreenshot(browser, startX, startY, endX, endY, options) {
   log('requested a screenshot for the following area: %j', {startX, startY, endX, endY});
 
   const screenDimensions = await browser.execute(getScreenDimensions);
   log('detected screenDimensions %j', screenDimensions);
   const screenDimension = new ScreenDimension(screenDimensions, browser);
 
-  const screenshotStrategy = ScreenshotStrategyManager.getStrategy(browser, screenDimension);
+  const screenshotStrategy = ScreenshotStrategyManager.getStrategy(browser, screenDimension, options);
   screenshotStrategy.setScrollArea(startX, startY, endX, endY);
 
   const uuid = generateUUID();
