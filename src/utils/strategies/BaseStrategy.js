@@ -27,7 +27,8 @@ export default class BaseStrategy {
       endX = documentWidth
       // throw new Error('endX is out of range');
     } else if (endY > documentHeight) {
-      throw new Error('endY is out of range');
+      endY = documentHeight
+      // throw new Error('endY is out of range');
     }
 
     this.area = {
