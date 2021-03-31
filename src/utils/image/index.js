@@ -3,16 +3,18 @@ import * as gm from './gm';
 import which from 'which';
 import debug from 'debug';
 
+import logger from '@wdio/logger'
 
-const log = debug('wdio-screenshot:image');
+const wlog = logger('wdio-screenshot:image')
 
 let gmInstalled = false;
 
 try {
   gmInstalled = !!which.sync('gm');
-} catch(e) {}
+} catch (e) {
+}
 
-log(`Use image processing library: ${gmInstalled ? 'GraphicsMagick' : 'Jimp'}`);
+wlog.debug(`Use image processing library: ${gmInstalled ? 'GraphicsMagick' : 'Jimp'}`);
 
-const { cropImage, mergeImages, scaleImage } = gmInstalled ? gm : jimp;
-export { cropImage, scaleImage, mergeImages };
+const {cropImage, mergeImages, scaleImage} = gmInstalled ? gm : jimp;
+export {cropImage, scaleImage, mergeImages};

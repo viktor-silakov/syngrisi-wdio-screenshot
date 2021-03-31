@@ -7,11 +7,14 @@ import afterScreenshot from './afterScreenshot';
 import getScreenDimensions from '../scripts/getScreenDimensions';
 import ScreenDimension from '../utils/ScreenDimension';
 
-const log = debug('wdio-screenshot:makeDocumentScreenshot');
+
+import logger from '@wdio/logger'
+
+const wlog = logger('wdio-screenshot:makeDocumentScreenshot')
 
 
 export default async function makeDocumentScreenshot(browser, options = {}) {
-  log('start document screenshot');
+  wlog.debug('start document screenshot');
 
   // hide scrollbars, scroll to start, hide & remove elements, wait for render
   await beforeScreenshot(browser, options);
@@ -26,7 +29,7 @@ export default async function makeDocumentScreenshot(browser, options = {}) {
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);
 
-  log('end document screenshot');
+  wlog.debug('end document screenshot');
 
   return base64Image;
 }

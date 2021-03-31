@@ -18,7 +18,6 @@ export default async function async(fileName, options) {
 
   // make screenshot of area
   const base64Image = await makeViewportScreenshot(this, options);
-
   if (typeof fileName !== 'undefined') {
     // store base64 image as real png
     await saveBase64Image(fileName, base64Image);

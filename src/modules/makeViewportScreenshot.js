@@ -9,11 +9,14 @@ import getScrollPosition from '../scripts/getScrollPosition';
 import getScreenDimensions from '../scripts/getScreenDimensions';
 import ScreenDimension from '../utils/ScreenDimension';
 
-const log = debug('wdio-screenshot:makeViewportScreenshot');
+import logger from '@wdio/logger'
+
+const wlog = logger('wdio-screenshot:makeViewportScreenshot')
+
 
 // Note: function name must be async to signalize WebdriverIO that this function returns a promise
 export default async function makeViewportScreenshot(browser, options = {}) {
-  log('start viewport screenshot');
+  wlog.debug('start viewport screenshot');
 
   // get current scroll position
   const [startX, startY] = await browser.execute(getScrollPosition);
@@ -34,7 +37,7 @@ export default async function makeViewportScreenshot(browser, options = {}) {
   // scroll back to original position
   await browser.execute(scroll, startX, startY);
 
-  log('end viewport screenshot');
+  wlog.debug('end viewport screenshot');
 
   return base64Image;
 }

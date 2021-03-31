@@ -7,11 +7,14 @@ import afterScreenshot from './afterScreenshot';
 import groupBoundingRect from '../utils/groupBoundingRect';
 import getBoundingRects from '../scripts/getBoundingRects';
 
-const log = debug('wdio-screenshot:makeElementScreenshot');
+import logger from '@wdio/logger'
+
+const wlog = logger('wdio-screenshot:makeElementScreenshot')
 
 
 export default async function makeElementScreenshot(browser, elementSelector, options = {}) {
-  log('start element screenshot');
+  //wlog.debug('start element screenshot');
+  wlog.debug('start element screenshot')
 
   // hide scrollbars, scroll to start, hide & remove elements, wait for render
   await beforeScreenshot(browser, options);
@@ -29,7 +32,7 @@ export default async function makeElementScreenshot(browser, elementSelector, op
   // show scrollbars, show & add elements
   await afterScreenshot(browser, options);
 
-  log('end element screenshot');
+  wlog.debug('end element screenshot');
 
   return base64Image;
 }
